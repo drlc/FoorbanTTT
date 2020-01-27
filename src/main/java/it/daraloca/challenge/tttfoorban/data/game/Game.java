@@ -38,13 +38,29 @@ public class Game implements Serializable {
     @Column(length = 16)
     private UUID id;
 
+    /**
+     * The dimension of the grid
+     */
     private Integer dimension;
+    /**
+     * The number of player
+     */
     private Integer numPlayer;
+    /**
+     * If the game is already ended
+     */
     private Boolean ended;
 
+    /**
+     * The game from which this game is originated from (useful to get who will
+     * start this game)
+     */
     @OneToOne(cascade = CascadeType.REMOVE)
     private Game fatherGame;
 
+    /**
+     * The moves related to this game
+     */
     @OneToMany(mappedBy = "game")
     private final Set<Move> moves = new HashSet<>();
 

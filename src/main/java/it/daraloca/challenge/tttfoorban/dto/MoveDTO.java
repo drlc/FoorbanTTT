@@ -1,18 +1,26 @@
 package it.daraloca.challenge.tttfoorban.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
+
+import it.daraloca.challenge.tttfoorban.enums.GamerEnum;
 
 /**
  * MoveDTO
  */
-public class MoveDTO {
+public class MoveDTO implements Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 4084616447863584212L;
 
     private UUID id;
 
     private Integer x;
     private Integer y;
-    private Integer value;
+    private GamerEnum value;
     private Date date;
 
     public UUID getId() {
@@ -39,11 +47,11 @@ public class MoveDTO {
         this.y = y;
     }
 
-    public Integer getValue() {
+    public GamerEnum getValue() {
         return this.value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(GamerEnum value) {
         this.value = value;
     }
 

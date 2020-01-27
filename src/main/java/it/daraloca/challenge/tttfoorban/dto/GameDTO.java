@@ -1,5 +1,6 @@
 package it.daraloca.challenge.tttfoorban.dto;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -9,13 +10,20 @@ import it.daraloca.challenge.tttfoorban.data.move.Move;
 /**
  * GameDTO
  */
-public class GameDTO {
+public class GameDTO implements Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 7597863502376462112L;
 
     private UUID id;
 
     private Integer dimension;
     private Integer numPlayer;
     private Boolean ended;
+
+    private UUID fatherGameId;
 
     private final Set<Move> moves = new HashSet<>();
 
@@ -50,6 +58,14 @@ public class GameDTO {
     public void setEnded(Boolean ended) {
         this.ended = ended;
     }
+
+    public UUID getFatherGameId() {
+        return this.fatherGameId;
+    }
+
+    public void setFatherGameId(UUID fatherGameId) {
+        this.fatherGameId = fatherGameId;
+    };
 
     public Set<Move> getMoves() {
         return this.moves;

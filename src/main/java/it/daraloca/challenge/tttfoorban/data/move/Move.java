@@ -17,6 +17,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import it.daraloca.challenge.tttfoorban.data.game.Game;
+import it.daraloca.challenge.tttfoorban.enums.GamerEnum;
 
 /**
  * Move
@@ -37,9 +38,21 @@ public class Move implements Serializable {
     @Column(length = 16)
     private UUID id;
 
+    /**
+     * Coordinate X
+     */
     private Integer x;
+    /**
+     * Coordinate Y
+     */
     private Integer y;
-    private Integer value;
+    /**
+     * Value of the cell
+     */
+    private GamerEnum value;
+    /**
+     * WHen the move has been done
+     */
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date;
 
@@ -70,11 +83,11 @@ public class Move implements Serializable {
         this.y = y;
     }
 
-    public Integer getValue() {
+    public GamerEnum getValue() {
         return this.value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(GamerEnum value) {
         this.value = value;
     }
 
