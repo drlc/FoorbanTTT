@@ -1,11 +1,11 @@
 package it.daraloca.challenge.tttfoorban.web;
 
-import java.util.List;
 import java.util.UUID;
 
 import com.querydsl.core.types.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.querydsl.binding.QuerydslPredicate;
@@ -40,7 +40,7 @@ public class GameAPI {
      * @return the page corrisponding on passed request
      */
     @GetMapping()
-    public List<GameDTO> getList(@QuerydslPredicate(root = Game.class) Predicate predicate,
+    public Page<GameDTO> getList(@QuerydslPredicate(root = Game.class) Predicate predicate,
             @PageableDefault(page = 0, size = 100, direction = Direction.ASC) Pageable pageable) {
         return gameSrv.findAll(predicate, pageable);
     }
