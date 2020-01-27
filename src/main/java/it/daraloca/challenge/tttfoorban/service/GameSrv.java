@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import it.daraloca.challenge.tttfoorban.data.game.Game;
 import it.daraloca.challenge.tttfoorban.data.game.GameRepository;
 import it.daraloca.challenge.tttfoorban.dto.GameDTO;
+import it.daraloca.challenge.tttfoorban.enums.GamerEnum;
 
 /**
  * GameSrv
@@ -46,6 +47,15 @@ public class GameSrv {
 			throw new RuntimeException("Passed Game is null");
 		}
 		return gameRepo.save(mapper.map(game, Game.class)).getId();
+	}
+
+	public void setWinner(UUID gameId, GamerEnum gamer){
+		if(gameId == null || gamer == null){
+			throw new RuntimeException("No gamer or GameID");
+		}
+		Game game = gameRepo.findById(gameId).orElseThrow(() -> new RuntimeException("No Game for the id"));
+		game.setWinner(gamer);
+		gameRepo.save(game);
 	}
 
 }
