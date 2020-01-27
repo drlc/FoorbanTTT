@@ -137,6 +137,7 @@ public class MoveSrv {
 			MoveResultDTO result = new MoveResultDTO();
 			result.setIsWinner(true);
 			result.setNextToMove(move.getValue());
+			return result;
 		}
 		return null;
 	}
