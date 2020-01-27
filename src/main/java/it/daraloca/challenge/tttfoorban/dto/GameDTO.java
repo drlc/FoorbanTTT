@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import it.daraloca.challenge.tttfoorban.data.move.Move;
+import it.daraloca.challenge.tttfoorban.enums.GamerEnum;
 
 /**
  * GameDTO
@@ -21,7 +22,7 @@ public class GameDTO implements Serializable {
 
     private Integer dimension;
     private Integer numPlayer;
-    private Boolean ended;
+    private GamerEnum winner;
 
     private UUID fatherGameId;
 
@@ -51,13 +52,13 @@ public class GameDTO implements Serializable {
         this.numPlayer = numPlayer;
     }
 
-    public Boolean getEnded() {
-        return this.ended;
+    public GamerEnum getWinner() {
+        return this.winner;
     }
 
-    public void setEnded(Boolean ended) {
-        this.ended = ended;
-    }
+    public void setWinner(GamerEnum winner) {
+        this.winner = winner;
+    };
 
     public UUID getFatherGameId() {
         return this.fatherGameId;

@@ -18,6 +18,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import it.daraloca.challenge.tttfoorban.data.move.Move;
+import it.daraloca.challenge.tttfoorban.enums.GamerEnum;
 
 /**
  * Game
@@ -47,9 +48,9 @@ public class Game implements Serializable {
      */
     private Integer numPlayer;
     /**
-     * If the game is already ended
+     * The winner of this math
      */
-    private Boolean ended;
+    private GamerEnum winner;
 
     /**
      * The game from which this game is originated from (useful to get who will
@@ -88,13 +89,13 @@ public class Game implements Serializable {
         this.numPlayer = numPlayer;
     }
 
-    public Boolean getEnded() {
-        return this.ended;
+    public GamerEnum getWinner() {
+        return this.winner;
     }
 
-    public void setEnded(Boolean ended) {
-        this.ended = ended;
-    }
+    public void setWinner(GamerEnum winner) {
+        this.winner = winner;
+    };
 
     public Game getFatherGame() {
         return this.fatherGame;

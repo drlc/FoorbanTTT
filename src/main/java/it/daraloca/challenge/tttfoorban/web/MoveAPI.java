@@ -41,8 +41,8 @@ public class MoveAPI {
      * 
      * @param gameId the identifier of the game
      * @param move   the move to save
-     * @return an error if the move is not permitted otherwise the result of the
-     *         move
+     * @return the winner if game has ended; the result of the move if still on
+     *         game; an error otherwise
      */
     @PostMapping()
     public MoveResultDTO move(@PathVariable("gameId") UUID gameId, @RequestBody MoveDTO move) {
