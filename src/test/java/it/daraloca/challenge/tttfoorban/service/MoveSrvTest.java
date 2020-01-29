@@ -90,7 +90,7 @@ public class MoveSrvTest {
         assertFalse(res.getIsWinner());
     }
 
-    @DisplayName("When call a move given a terminated game then return the winner col")
+    @DisplayName("When call a move given a not ended game then return the winner col")
     @Test
     public void columnWinnerGame() {
         Game game = new Game();
@@ -112,7 +112,7 @@ public class MoveSrvTest {
         assertTrue(res.getIsWinner());
     }
 
-    @DisplayName("When call a move given a terminated game then return the winner row")
+    @DisplayName("When call a move given a ended game then return the winner row")
     @Test
     public void rowWinnerGame() {
         Game game = new Game();
@@ -134,7 +134,7 @@ public class MoveSrvTest {
         assertTrue(res.getIsWinner());
     }
 
-    @DisplayName("When call a move given a terminated game then return the winner diagonal")
+    @DisplayName("When call a move given a not ended game then return the winner diagonal")
     @Test
     public void diagonalWinnerGame() {
         Game game = new Game();
@@ -156,7 +156,7 @@ public class MoveSrvTest {
         assertTrue(res.getIsWinner());
     }
 
-    @DisplayName("When call a move given a terminated game then return the winner diagonla reverse")
+    @DisplayName("When call a move given a not ended game then return the winner diagonal reverse")
     @Test
     public void diagonalReverseWinnerGame() {
         Game game = new Game();
@@ -176,6 +176,38 @@ public class MoveSrvTest {
         MoveResultDTO res = moveSrv.move(game.getId(), new MoveDTO(4, 0, GamerEnum.ONE, new Date()));
         assertEquals(res.getNextToMove(), GamerEnum.ONE);
         assertTrue(res.getIsWinner());
+    }
+
+    @DisplayName("When call a move given a not ended game then return the next to move")
+    @Test
+    public void noWinner() {
+        Game game = new Game();
+        game.setDimension(11);
+        game.setNumPlayer(4);
+        game = gameRepository.save(game);
+        List<Move> moves = new ArrayList<>();
+        moves.forEach(el -> {
+            moveRepository.save(el);
+        });
+        MoveResultDTO res = moveSrv.move(game.getId(), new MoveDTO(4, 0, GamerEnum.ONE, new Date()));
+        assertEquals(res.getNextToMove(), GamerEnum.THREE);
+        assertFalse(res.getIsWinner());
+    }
+
+    @DisplayName("When call a move with the last player given a not ended game then return the next to move is the first player")
+    @Test
+    public void noWinnerModuleCase() {
+        Game game = new Game();
+        game.setDimension(11);
+        game.setNumPlayer(4);
+        game = gameRepository.save(game);
+        List<Move> moves = new ArrayList<>();
+        moves.forEach(el -> {
+            moveRepository.save(el);
+        });
+        MoveResultDTO res = moveSrv.move(game.getId(), new MoveDTO(4, 0, GamerEnum.ELEVEN, new Date()));
+        assertEquals(res.getNextToMove(), GamerEnum.ONE);
+        assertFalse(res.getIsWinner());
     }
 
 }
