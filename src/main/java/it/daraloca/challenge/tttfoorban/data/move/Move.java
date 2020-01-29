@@ -32,6 +32,17 @@ public class Move implements Serializable {
      */
     private static final long serialVersionUID = -23573485743877534L;
 
+    public Move() {
+    }
+
+    public Move(Integer x, Integer y, GamerEnum value, Date date, Game game) {
+        this.x = x;
+        this.y = y;
+        this.value = value;
+        this.date = date;
+        this.game = game;
+    }
+
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")

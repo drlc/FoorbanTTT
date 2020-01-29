@@ -84,6 +84,7 @@ public class MoveSrv {
 
 	private MoveResultDTO checkWinner(UUID gameId, MoveDTO move, GameDTO game) {
 		Map<String, GamerEnum> board = new HashMap<>();
+		// TODO: optimize in DB with already mapped key
 		this.findAll(gameId).forEach(el -> {
 			board.put(el.getX() + "_" + el.getY(), el.getValue());
 		});
@@ -113,7 +114,7 @@ public class MoveSrv {
 		// diag
 		if (!winner && x == y) {
 			for (int i = 0; i < n; i++) {
-				if (board.get(i + "_" + 1) != move.getValue())
+				if (board.get(i + "_" + i) != move.getValue())
 					break;
 				if (i == n - 1) {
 					winner = true;

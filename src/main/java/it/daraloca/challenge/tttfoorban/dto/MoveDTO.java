@@ -23,6 +23,16 @@ public class MoveDTO implements Serializable {
     private GamerEnum value;
     private Date date;
 
+    public MoveDTO() {
+    }
+
+    public MoveDTO(Integer x, Integer y, GamerEnum value, Date date) {
+        this.x = x;
+        this.y = y;
+        this.value = value;
+        this.date = date;
+    }
+
     public UUID getId() {
         return this.id;
     }

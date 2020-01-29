@@ -23,6 +23,7 @@ public class GameDTO implements Serializable {
     private Integer dimension;
     private Integer numPlayer;
     private GamerEnum winner;
+    
 
     private UUID fatherGameId;
 

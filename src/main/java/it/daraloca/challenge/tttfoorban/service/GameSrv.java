@@ -39,7 +39,7 @@ public class GameSrv {
 	}
 
 	public GameDTO findOne(UUID gameId) {
-		return mapper.map(gameRepo.findById(gameId), GameDTO.class);
+		return mapper.map(gameRepo.findById(gameId).get(), GameDTO.class);
 	}
 
 	public UUID create(GameDTO game) {
@@ -49,8 +49,8 @@ public class GameSrv {
 		return gameRepo.save(mapper.map(game, Game.class)).getId();
 	}
 
-	public void setWinner(UUID gameId, GamerEnum gamer){
-		if(gameId == null || gamer == null){
+	public void setWinner(UUID gameId, GamerEnum gamer) {
+		if (gameId == null || gamer == null) {
 			throw new RuntimeException("No gamer or GameID");
 		}
 		Game game = gameRepo.findById(gameId).orElseThrow(() -> new RuntimeException("No Game for the id"));
