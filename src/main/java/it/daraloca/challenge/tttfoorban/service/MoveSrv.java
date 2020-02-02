@@ -65,6 +65,8 @@ public class MoveSrv {
 			return mr;
 		}
 
+		// TODO insert check if the player who move is the player who can move
+
 		// save the move
 		Move moveToSave = mapper.map(move, Move.class);
 		moveToSave.setGame(em.getReference(Game.class, gameId));
