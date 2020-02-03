@@ -13,6 +13,8 @@ import it.daraloca.challenge.tttfoorban.enums.GamerEnum;
  */
 public class GameDTO implements Serializable {
 
+    // TODO missing validations
+
     /**
      *
      */
@@ -22,8 +24,8 @@ public class GameDTO implements Serializable {
 
     private Integer dimension;
     private Integer numPlayer;
+
     private GamerEnum winner;
-    
 
     private UUID fatherGameId;
 
