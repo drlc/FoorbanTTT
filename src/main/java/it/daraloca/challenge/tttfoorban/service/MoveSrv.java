@@ -58,10 +58,18 @@ public class MoveSrv {
 			throw new RuntimeException("No move to save");
 		}
 		// if already finished, return the winner
-		if (gameSrv.findOne(gameId).getWinner() != null) {
+		if (game.getWinner() != null) {
 			MoveResultDTO mr = new MoveResultDTO();
 			mr.setIsWinner(true);
 			mr.setNextToMove(game.getWinner());
+			return mr;
+		}
+
+		// if already finished, return the winner
+		if (move.getValue() == null) {
+			MoveResultDTO mr = new MoveResultDTO();
+			mr.setIsWinner(false);
+			mr.setNextToMove(GamerEnum.values()[(findAll(gameId).size()) % game.getNumPlayer()]);
 			return mr;
 		}
 

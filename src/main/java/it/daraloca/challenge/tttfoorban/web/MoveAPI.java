@@ -19,7 +19,7 @@ import it.daraloca.challenge.tttfoorban.service.MoveSrv;
  * MoveAPI
  */
 @RestController
-@RequestMapping("/{gameId}/move/")
+@RequestMapping("/game/{gameId}/move/")
 public class MoveAPI {
 
     @Autowired

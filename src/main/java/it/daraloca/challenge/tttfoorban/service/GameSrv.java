@@ -26,6 +26,8 @@ public class GameSrv {
 
 	@Autowired
 	private GameRepository gameRepo;
+	@Autowired
+	private MoveSrv moveSrv;
 
 	@Autowired
 	private Mapper mapper;
@@ -39,7 +41,9 @@ public class GameSrv {
 	}
 
 	public GameDTO findOne(UUID gameId) {
-		return mapper.map(gameRepo.findById(gameId).get(), GameDTO.class);
+		GameDTO game = mapper.map(gameRepo.findById(gameId).get(), GameDTO.class);
+		game.getMoves().addAll(moveSrv.findAll(gameId));
+		return game;
 	}
 
 	public UUID create(GameDTO game) {

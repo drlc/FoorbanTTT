@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import it.daraloca.challenge.tttfoorban.data.move.Move;
 import it.daraloca.challenge.tttfoorban.enums.GamerEnum;
 
 /**
@@ -29,7 +28,7 @@ public class GameDTO implements Serializable {
 
     private UUID fatherGameId;
 
-    private final Set<Move> moves = new HashSet<>();
+    private final Set<MoveDTO> moves = new HashSet<>();
 
     public UUID getId() {
         return this.id;
@@ -71,7 +70,7 @@ public class GameDTO implements Serializable {
         this.fatherGameId = fatherGameId;
     };
 
-    public Set<Move> getMoves() {
+    public Set<MoveDTO> getMoves() {
         return this.moves;
     }
 
