@@ -6,10 +6,12 @@ import java.util.Set;
 import java.util.UUID;
 
 import it.daraloca.challenge.tttfoorban.enums.GamerEnum;
+import lombok.Data;
 
 /**
  * GameDTO
  */
+@Data
 public class GameDTO implements Serializable {
 
     // TODO missing validations
@@ -29,49 +31,5 @@ public class GameDTO implements Serializable {
     private UUID fatherGameId;
 
     private final Set<MoveDTO> moves = new HashSet<>();
-
-    public UUID getId() {
-        return this.id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public Integer getDimension() {
-        return this.dimension;
-    }
-
-    public void setDimension(Integer dimension) {
-        this.dimension = dimension;
-    }
-
-    public Integer getNumPlayer() {
-        return this.numPlayer;
-    }
-
-    public void setNumPlayer(Integer numPlayer) {
-        this.numPlayer = numPlayer;
-    }
-
-    public GamerEnum getWinner() {
-        return this.winner;
-    }
-
-    public void setWinner(GamerEnum winner) {
-        this.winner = winner;
-    };
-
-    public UUID getFatherGameId() {
-        return this.fatherGameId;
-    }
-
-    public void setFatherGameId(UUID fatherGameId) {
-        this.fatherGameId = fatherGameId;
-    };
-
-    public Set<MoveDTO> getMoves() {
-        return this.moves;
-    }
 
 }

@@ -19,10 +19,12 @@ import org.hibernate.annotations.GenericGenerator;
 
 import it.daraloca.challenge.tttfoorban.data.move.Move;
 import it.daraloca.challenge.tttfoorban.enums.GamerEnum;
+import lombok.Data;
 
 /**
  * Game
  */
+@Data
 @Entity
 @DynamicInsert
 @DynamicUpdate
@@ -64,49 +66,5 @@ public class Game implements Serializable {
      */
     @OneToMany(mappedBy = "game")
     private final Set<Move> moves = new HashSet<>();
-
-    public UUID getId() {
-        return this.id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public Integer getDimension() {
-        return this.dimension;
-    }
-
-    public void setDimension(Integer dimension) {
-        this.dimension = dimension;
-    }
-
-    public Integer getNumPlayer() {
-        return this.numPlayer;
-    }
-
-    public void setNumPlayer(Integer numPlayer) {
-        this.numPlayer = numPlayer;
-    }
-
-    public GamerEnum getWinner() {
-        return this.winner;
-    }
-
-    public void setWinner(GamerEnum winner) {
-        this.winner = winner;
-    };
-
-    public Game getFatherGame() {
-        return this.fatherGame;
-    }
-
-    public void setFatherGame(Game fatherGame) {
-        this.fatherGame = fatherGame;
-    };
-
-    public Set<Move> getMoves() {
-        return this.moves;
-    }
 
 }
